@@ -164,17 +164,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </html>
             ";
                 $mail->Body = $emailBody;
-                $mail->send();
 
                 if ($mail->send()) {
                     $_SESSION['email'] = 'Email has been sent!';
                     header('Location: index.php'); 
-                    exit; 
+                    exit(); 
                 }
             } catch (Exception $e) {
                 $_SESSION['email'] = 'Email not sent! Error: ' . $mail->ErrorInfo;
                 header('Location: index.php'); 
-                exit; 
+                exit(); 
             }
         }
     }
